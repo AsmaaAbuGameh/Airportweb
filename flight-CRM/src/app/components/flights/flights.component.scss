@@ -1,0 +1,25 @@
+div{
+  height: 100vh;
+    overflow: scroll;
+}
+
+table{
+  width:60vw;
+  margin: 0 auto;
+
+};
+
+button{
+  outline:none;
+  border:none;
+  color: #0a58ca;
+
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+.swal2-styled.swal2-confirm{
+  background-color: #0d6efd;
+}

@@ -1,0 +1,33 @@
+
+<!-- <div *ngIf="httpService.cars | async as cars">
+  <pre>
+
+    {{ cars | json }}
+
+  </pre>
+</div> -->
+
+
+
+<div class="cars-gallery">
+  <div  class="cars-card" *ngFor="let car of cars| paginate: { itemsPerPage: 8, currentPage: p }">
+    <header>
+      <img *ngIf="car.img_url" [src]="car.img_url" [alt]="car.id">
+      <div>
+        <h4> Factory: {{ car.make }}</h4>
+        <h5> Model: {{ car.model }}</h5>
+      </div>
+    </header>
+    <p> Horse Power: {{ car.horsepower }} <button (click)="addToFlight(car)">Add to flight</button></p>
+  </div>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+
+
+
+
+
+
+

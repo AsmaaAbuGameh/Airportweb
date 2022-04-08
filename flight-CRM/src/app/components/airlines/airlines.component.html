@@ -1,0 +1,57 @@
+<div *ngIf="(rule=='Airline' || rule=='Admin') && airlineApi.airlines| async as airlines">
+  <!-- <pre>
+    {{ airlines | json }}
+  </pre> -->
+
+<button [hidden]="rule!=='Admin'" (click)="getInfo()" ><i class="far fa-question-circle text-danger p-2 fs-1"></i></button>
+
+  <h1 class="display-2 text-center mb-3" ><a [hidden]="rule!=='Admin'" routerLink="info" class="m-1">
+    </a>Air Lines <a [hidden]="rule!=='Admin'" routerLink="insert"  class="m-1">
+    <i class="far fa-plus-square"> </i>
+  </a></h1>
+  <table class="table">
+    <thead>
+      <tr>
+      <th scope="col">#</th>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Country</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Operations</th>
+
+
+
+    </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let airline of airlines;inx as index" >
+      <tr>
+        <th scope="row">{{inx}}</th>
+        <td scope="row">{{airline.id}}</td>
+        <td scope="row">{{airline.name}}</td>
+        <td scope="row">{{airline.country}}</td>
+        <td scope="row">{{airline.username}}</td>
+        <td scope="row">
+          <a [hidden]="rule!=='Admin'" routerLink="update" [queryParams]="{id:airline.id,name: airline.name,countryid:airline.country,userid:airline.username}"  class='m-1'>
+            <i  class="fas fa-edit"> </i>
+          </a>
+          <a [hidden]="rule!=='Admin'" routerLink="delete"  [queryParams]="{id:airline.id}" class='m-1'>
+          <i class="fas fa-trash-alt"> </i>
+        </a>
+        <!--  <a [hidden]="rule!=='Admin'" routerLink="insert" class="m-1">
+         <i class="far fa-plus-square"> </i>
+        </a> --></td>
+
+      </tr>
+      </ng-container>
+    </tbody>
+
+    </table>
+</div>
+
+
+<div *ngIf="(rule!=='Airline' && rule!=='Admin')">
+
+  <p class="m-2"> <span class="text-danger">*</span> Only Airline Or Admin Rule can see this data!!! </p>
+
+</div>
